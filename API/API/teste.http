@@ -2,6 +2,6 @@ GET http://localhost:5045
 
 
 ###
-GET http://localhost:5045/SegundoTeste
+GET http://localhost:5045/api/produto/listar
 
 

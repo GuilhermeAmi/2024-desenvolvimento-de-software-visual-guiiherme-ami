@@ -2,6 +2,19 @@ GET http://localhost:5045
 
 
 ###
+
+###
 GET http://localhost:5045/api/produto/listar
 
+###
+GET http://localhost:5045/api/produto/Produto-A
 
+###
+POST http://localhost:5045/api/produto/cadastrar
+Content-Type: application/json
+
+{
+    "nome": "Notebook",
+    "valor": 2000.0,
+    "quantidade": 10
+}

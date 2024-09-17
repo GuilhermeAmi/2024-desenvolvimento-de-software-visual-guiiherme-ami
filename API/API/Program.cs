@@ -1,6 +1,6 @@
 
 
-
+using Microsoft.AspNetCore.Mvc;
 using API.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,13 +37,44 @@ List<Produto> produtos = new List<Produto>
 
 app.MapGet("/", () => "Deus é pai");
 
-app.MapGet("/api/produto/listar", () => 
+app.MapGet("/api/produto/listar", () =>
 {
-    return produtos;
+    if (produtos.Count > 0)
+    {
+
+        return Results.Ok(produtos);
+
+    }
+    return Results.NotFound();
 });
+
+
+
+app.MapPost("/api/produto/cadastrar", ([FromBody] Produto produto) =>
+{
+    produtos.Add(produto);
+    return Results.Created("", produto);
+});
+
+
+// Buscar um produto pelo nome
+app.MapGet("/api/produto/{nome}", (string nome) =>
+{
+    var produto = produtos.FirstOrDefault(p => p.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
+    if (produto != null)
+    {
+        return Results.Ok(produto);
+    }
+    return Results.NotFound();
+});
+
+
 
 app.Run();
 
 
 // Produto produto = new Produto();
-
+//Exercícios para aula de hoje
+// - Buscar um produto pelo nome
+// - Remover um produto
+// - Alterar um produto

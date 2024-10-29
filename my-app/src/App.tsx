@@ -1,5 +1,6 @@
 import React from 'react';
 import ComponenteExempl from './ComponenteExemplo';
+import ConsultaCEP from './ConsultaCep';
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
       <ComponenteExempl />
       <ComponenteExempl />
       <ComponenteExempl />
-      <ComponenteExempl />
+      <ConsultaCEP />
     </div>
   );
 }
